@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<style>
+		.bground {
+			background-image: url("img/login.jpg");
+			height: 110%;
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: cover;
+		}
+	</style>
+</head>
+<body class="bground">
+	<div class="container  text-center">
+		<div id="cont">
+			<form method="POST" class="form-signin">
+				<div align="center">
+					<img class="img-circle" src="img/logo_KF.png" alt="" width="152" height="152">
+					<h2 class="h1 font-weight-normal">Fazer Login</h2>
+					<br>
+					<label for="nomeusuario" class="sr-only">E-Mail</label>
+					<input type="text" name="usuario" id="campos" class="form-control" placeholder="Nome" required>
+					<br>
+					<label for="inputPassword" class="sr-only">Senha</label>
+					<input type="password" name="senha" id="campos" class="form-control" placeholder="Senha" required>
+					<div class="checkbox">
+						<label>
+							<input type="checkbox" value="remember-me"> Lembrar senha
+						</label>
+					</div>
+						<input type="submit" id="botoes" value="Acessar"  href="index.html" class="btn btn-lg btn-primary btn-block"/>
+						<br>
+						<p class="mt-5 text-muted">&copy; 2018</p>
+					</div>
+			</form>
+		</div>
+	</div>
+</body>
+</html>
