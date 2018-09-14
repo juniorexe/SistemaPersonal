@@ -1,5 +1,8 @@
 from django.shortcuts import render
-from models import Aluno, Medidas
+from .models import Aluno, Medidas
+
+def home(request):
+    return render(request, 'index.html')
 
 def calcula_imc(aluno):
     peso = aluno.peso
