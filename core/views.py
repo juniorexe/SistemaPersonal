@@ -4,6 +4,13 @@ from .models import Aluno, Medidas
 def home(request):
     return render(request, 'index.html')
 
+def cadastro(request):
+    return render(request, 'cadastro_aluno.html')
+
+def novo_cadastro(request):
+    objeto = request.POST
+    
+
 def calcula_imc(aluno):
     peso = aluno.peso
     altura = aluno.altura

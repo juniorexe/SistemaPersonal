@@ -60,7 +60,7 @@
 			        	<a class="dropdown-toggle" data-toggle="dropdown" href="#">Alunos<span class="caret"></span></a>
 			          	<ul class="dropdown-menu">
 			          	
-			            	<li><a href=Cadastro>Cadastrar Aluno</a></li>
+			            	<li><a href="{% url 'cadastro' %}">Cadastrar Aluno</a></li>
 			            	<li><a href=listar_Aluno>Todos os Alunos</a></li>
 			          	</ul>
 			        </li>
@@ -87,7 +87,7 @@
 			<div>
 				<br>
 				<a href=listarAvaliacao><input type="submit" value="Meus Atendimentos" class="btn btn-primary"></a>
-				<a href=Cadastro><input type="submit" value="+ Novo Atendimento" class="btn btn-success"></a>
+				<a href="{% url 'cadastro' %}"><input type="submit" value="+ Novo Atendimento" class="btn btn-success"></a>
 				<br><br><br>
 			</div>
 	</div>
