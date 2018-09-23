@@ -1,17 +1,28 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import logout
 from .models import Aluno, Medidas
+from .forms import AlunoForm
 
 
+def my_logout(request):
+    logout(request)
+    return redirect('home')
+
+@login_required
 def home(request):
     return render(request, 'index.html')
 
 def cadastro(request):
-    return render(request, 'cadastro_aluno.html')
+    form = AlunoForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return redirect('home')
+    return render(request, 'cadastro_aluno.html', {'form': form})
 
-def novo_cadastro(request):
-    objeto = request.POST
-    
+def listarAlunos(request):
+    alunos = Aluno.objects.all()
+    return render(request, 'lista_alunos.html', {'alunos': alunos})
 
 def calcula_imc(aluno):
     peso = aluno.peso

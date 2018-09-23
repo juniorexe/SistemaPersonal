@@ -61,7 +61,7 @@
 			          	<ul class="dropdown-menu">
 			          	
 			            	<li><a href="{% url 'cadastro' %}">Cadastrar Aluno</a></li>
-			            	<li><a href=listar_Aluno>Todos os Alunos</a></li>
+			            	<li><a href="{% url 'listarAlunos' %}">Todos os Alunos</a></li>
 			          	</ul>
 			        </li>
 			        <li><a href="Avaliacao">Fichas</a></li>
@@ -69,8 +69,12 @@
 			        <li><a href="#">Graficos</a></li>
 			    </ul>
 			    <ul class="nav navbar-nav navbar-right">
-			    	<li><a ><span ></span> Sem professor logado</a></li>
-			    	<li><a href="Login.jsp"><span class="glyphicon glyphicon-user"></span> Sair</a></li>
+					{% if user.is_authenticated %}
+						<li><a><span ></span>Bem vindo - {{ user.username }}</a></li>
+					{% else %}
+						<li><a><span ></span> Sem professor logado</a></li>
+					{% endif %}
+					<li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-user"></span> Sair</a></li>
 			    	<li><a></a></li>
 			    </ul>
    			</div>

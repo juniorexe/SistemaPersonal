@@ -18,7 +18,7 @@
 	</style>
 </head>
 <body class="bground">
-	<div class="container  text-center">
+	<div class="container text-center">
 		<div id="cont">
 			<form method="POST" class="form-signin">
 				{% csrf_token %}
@@ -26,20 +26,16 @@
 					<img class="img-circle" src="../static/img/logo_KF.png" alt="" width="152" height="152">
 					<h2 class="h1 font-weight-normal">Fazer Login</h2>
 					<br>
-					<label for="nomeusuario" class="sr-only">E-Mail</label>
-					<input type="text" name="usuario" id="campos" class="form-control" placeholder="Nome" required>
-					<br>
-					<label for="inputPassword" class="sr-only">Senha</label>
-					<input type="password" name="senha" id="campos" class="form-control" placeholder="Senha" required>
+					{{ form.as_p }}
 					<div class="checkbox">
 						<label>
 							<input type="checkbox" value="remember-me"> Lembrar senha
 						</label>
 					</div>
-						<input type="submit" id="botoes" value="Acessar" class="btn btn-lg btn-primary btn-block"/>
-						<br>
-						<p class="mt-5 text-muted">&copy; 2018</p>
-					</div>
+					<input type="submit" id="botoes" value="Acessar" class="btn btn-lg btn-primary btn-block"/>
+					<br>
+					<p class="mt-5 text-muted">&copy; 2018</p>
+				</div>
 			</form>
 		</div>
 	</div>

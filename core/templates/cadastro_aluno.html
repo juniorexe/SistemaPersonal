@@ -10,14 +10,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.0/jquery.mask.js"></script>
-	<script>
-		$(document).ready(function () { 
-			var $campoCpf = $("#cpf");
-			var $campoTel = $("#telefone");
-			 $campoCpf.mask('000.000.000-00', {reverse: false});
-			 $campoTel.mask('(99) 99999-9999', {reverse: false});
-		});
-	</script>
+
 	<style>
 		#banner {
 			opacity: 1;
@@ -69,12 +62,12 @@
      		<div class="collapse navbar-collapse" id="myNavbar">
 				<ul class="nav navbar-nav">
 			    	<li><a></a></li>
-			        <li><a href="Index.jsp">Home</a></li>
+			        <li><a href="{% url 'home' %}">Home</a></li>
 			        <li class="dropdown">
 			        	<a class="dropdown-toggle" data-toggle="dropdown" href="#">Alunos<span class="caret"></span></a>
 			          	<ul class="dropdown-menu">
 			            	<li><a href=Cadastro>Cadastrar Aluno</a></li>
-			            	<li><a href=listar_Aluno>Todos os Alunos</a></li>
+			            	<li><a href="{% url 'listarAlunos' %}">Todos os Alunos</a></li>
 			          	</ul>
 			        </li>
 			        <li><a href="Avaliacao">Fichas</a></li>
@@ -82,8 +75,12 @@
 			        <li><a href="#">Graficos</a></li>
 			    </ul>
 			    <ul class="nav navbar-nav navbar-right">
-			    	<li><a ><span ></span> Sem professor logado</a></li>
-			    	<li><a href="Login.jsp"><span class="glyphicon glyphicon-user"></span> Sair</a></li>
+					{% if user.is_authenticated %}
+						<li><a><span ></span>Bem vindo - {{ user.username }}</a></li>
+					{% else %}
+						<li><a><span ></span> Sem professor logado</a></li>
+					{% endif %}
+			    	<li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-user"></span> Sair</a></li>
 			    	<li><a></a></li>
 			    </ul>
    			</div>
@@ -93,26 +90,11 @@
 		<div>
 			<form method="POST">
 				{% csrf_token %}
-				<div class="col-md-6">
-					<div class="form-group">
-						<label for="nome" id="labels">Nome</label>
-						<input type="text" id="nome" name="nome" class="form-control"/>
-						<label for="nome" id="labels">CPF</label>
-						<input type="text" id="cpf" class="form-control" placeholder="CPF" maxlength="14"/>
-						<label for="nome" id="labels">Telefone</label>
-						<input type="text" id="telefone" name="telefone" class="form-control" maxlength="15"/>
-					</div>
-				</div>
-				<div class="col-md-6">
-					<div class="form-group">
-						<label for="email" id="labels">E-Mail</label>
-						<input type="text" id="email" name="email" class="form-control"/>
-						<label for="datanasc" id="labels">Data de Nascimento</label>
-						<input type="date" id="datanasc" name="datanasc" class="form-control"/>
-						<input type="submit" value="Avaliar Agora" id="c_avaliar" href="" class="btn btn-success btn"/>
-						<input type="submit" value="Cancelar" id="c_botoes" href="" class="btn btn-primary btn"/>
-						<input type="submit" value="Gravar"  id="c_botoes" name="action" class="btn btn-primary btn"/>
-					</div>
+				{{ form }}
+				<div>
+					<input type="submit" value="Avaliar Agora" id="c_avaliar" href="" class="btn btn-success btn"/>
+					<input type="submit" value="Cancelar" id="c_botoes" href="" class="btn btn-primary btn"/>
+					<input type="submit" value="Gravar"  id="c_botoes" name="action" class="btn btn-primary btn"/>
 				</div>
 			</form>
 		</div>

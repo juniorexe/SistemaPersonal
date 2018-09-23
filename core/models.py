@@ -2,12 +2,15 @@ from django.db import models
 
 class Aluno(models.Model):
     nome = models.CharField(max_length=50)
+    dtNascimento = models.DateField(null=False)
     rg = models.CharField(max_length=12)
+    cpf = models.CharField(max_length=14)
     idade = models.IntegerField
     endereco = models.CharField(max_length=100)
     complemento = models.CharField(max_length=100)
     bairro = models.CharField(max_length=100)
     cidade = models.CharField(max_length=100)
+    email = models.EmailField(null=False)
     telefone = models.CharField(max_length=15)
 
 class Medidas(models.Model):
