@@ -1,8 +1,8 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from .models import Aluno, Medidas
-from .forms import AlunoForm
+from .forms import AlunoForm, MedidasForm
 
 
 def my_logout(request):
@@ -13,12 +13,20 @@ def my_logout(request):
 def home(request):
     return render(request, 'index.html')
 
-def cadastro(request):
+def cadastrarAluno(request):
     form = AlunoForm(request.POST or None)
     if form.is_valid():
         form.save()
         return redirect('home')
     return render(request, 'cadastro_aluno.html', {'form': form})
+
+def avaliarAluno(request, id):
+    aluno = get_object_or_404(Aluno, pk=id)
+    form = MedidasForm(request.POST or None, instance=aluno)
+    if form.is_valid():
+        form.save()
+        return redirect('home')
+    return render(request, 'avaliacao.html', {'form': form})
 
 def listarAlunos(request):
     alunos = Aluno.objects.all()

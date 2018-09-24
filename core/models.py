@@ -12,7 +12,10 @@ class Aluno(models.Model):
     cidade = models.CharField(max_length=100)
     email = models.EmailField(null=False)
     telefone = models.CharField(max_length=15)
-
+    
+    def __str__(self):
+        return self.nome
+    
 class Medidas(models.Model):
     peso = models.DecimalField(max_digits=5, decimal_places=2)
     altura = models.DecimalField(max_digits=5, decimal_places=2)
