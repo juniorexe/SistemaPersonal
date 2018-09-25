@@ -10,3 +10,8 @@ class MedidasForm(ModelForm):
     class Meta:
         model = Medidas
         fields = '__all__'
+
+class AlunoFormCompleto(ModelForm):
+    class Meta:
+        model = Aluno
+        fields = '__all__'

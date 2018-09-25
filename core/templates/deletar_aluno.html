@@ -1,0 +1,9 @@
+{% extends 'base_outras.html' %}
+{% block main %}
+
+<form method="POST">
+    {% csrf_token %}
+    <h1>Deseja realmente excluir </h1>
+</form>
+
+{% endblock %}
