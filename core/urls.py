@@ -10,6 +10,6 @@ urlpatterns = [
     path('cadastro-de-aluno/', cadastrarAluno, name="cadastrarAluno"),
     path('editar-aluno/<int:id>', editarAluno, name="editarAluno"),
     path('excluir-aluno/<int:id>', excluirAluno, name="excluirAluno"),
-    path('avaliacao/<int:id>', avaliarAluno, name="avaliarAluno"),
+    path('avaliacao/', avaliarAluno, name="avaliarAluno"),
     path('todos-os-alunos/', listarAlunos, name="listarAlunos"),
 ]

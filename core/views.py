@@ -36,17 +36,16 @@ def excluirAluno(request, id):
         return redirect('listarAlunos')
     return render(request, 'lista_alunos.html', {'alunoDeletar': alunoDeletar})
 
-def avaliarAluno(request, id):
-    aluno = get_object_or_404(Aluno, pk=id)
-    form = MedidasForm(request.POST or None, instance=aluno)
+def listarAlunos(request):
+    alunos = Aluno.objects.all()
+    return render(request, 'lista_alunos.html', {'alunos': alunos})
+
+def avaliarAluno(request):
+    form = MedidasForm(request.POST or None)
     if form.is_valid():
         form.save()
         return redirect('home')
     return render(request, 'avaliacao.html', {'form': form})
-
-def listarAlunos(request):
-    alunos = Aluno.objects.all()
-    return render(request, 'lista_alunos.html', {'alunos': alunos})
 
 def calcula_imc(aluno):
     peso = aluno.peso

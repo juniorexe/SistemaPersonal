@@ -1,4 +1,6 @@
 {% extends 'base_outras.html' %}
+{% block title %} Lista de Alunos {% endblock %}
+
 {% block main %}
 <div class="container">
 	<h1 align="center">Alunos Cadastrados</h1>	
@@ -22,7 +24,7 @@
 			<td>{{ aluno.email }}</td>
 			<td>{{ aluno.dtNascimento }}</td>
 			<td>
-				<a href="{% url 'avaliarAluno' aluno.id %}" type="submit" class="glyphicon glyphicon-paste"></a>
+				<a href="{% url 'avaliarAluno'%}" type="submit" class="glyphicon glyphicon-paste"></a>
 				<a href="{% url 'excluirAluno' aluno.id %}" type="submit" class="glyphicon glyphicon-trash"></a>
 			</td>
 		</tr>

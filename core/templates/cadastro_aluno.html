@@ -1,14 +1,18 @@
 {% extends 'base_outras.html' %}
+{% load bootstrap %}
+{% block title %}Cadastro de Aluno{% endblock %}
+
 {% block main %}
 <div class="row" id="divs">
 	<div>
 		<form method="POST">
 			{% csrf_token %}
-			{{ form }}
+			{{ form|bootstrap }}
 			<div>
-				<input type="submit" value="Avaliar Agora" id="c_avaliar" href="" class="btn btn-success btn"/>
-				<input type="submit" value="Cancelar" id="c_botoes" href="" class="btn btn-primary btn"/>
-				<input type="submit" value="Gravar"  id="c_botoes" name="action" class="btn btn-primary btn"/>
+				<br>
+				<input type="submit" value="Avaliar Agora" href="{% url 'avaliarAluno' %}" class="btn btn-success btn"/>
+				<input type="submit" value="Cancelar" href="{% url 'home' %}" class="btn btn-primary btn"/>
+				<input type="submit" value="Gravar" class="btn btn-primary btn"/>
 			</div>
 		</form>
 	</div>

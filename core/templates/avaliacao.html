@@ -1,11 +1,14 @@
 {% extends 'base_outras.html' %}
+{% load bootstrap %}
+{% block title %}Avaliação{% endblock %}
+
 {% block main %}
 <div class="row" id="divs">
 	<form method="POST">
 		{% csrf_token %}
-		{{ form }}
-		<input type="submit" value="Cancelar" id="c_botoes" href="{% url 'home' %}" class="btn btn-primary">
-		<input type="submit" value="Salvar" id="c_botoes" name="action" class="btn btn-primary">
+		{{ form|bootstrap }}
+		<input type="submit" value="Cancelar" href="{% url 'home' %}" class="btn btn-primary">
+		<input type="submit" value="Salvar" class="btn btn-primary">
 	</form>	
 </div>
 {% endblock %}
