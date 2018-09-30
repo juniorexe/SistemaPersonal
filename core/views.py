@@ -17,7 +17,10 @@ def cadastrarAluno(request):
     form = AlunoForm(request.POST or None)
     if form.is_valid():
         form.save()
-        return redirect('home')
+        if request.POST['AvaliarAgora']:
+            return redirect('avaliarAluno')
+        else:
+            return redirect('home')
     return render(request, 'cadastro_aluno.html', {'form': form})
 
 def editarAluno(request, id):
@@ -37,7 +40,13 @@ def excluirAluno(request, id):
     return render(request, 'lista_alunos.html', {'alunoDeletar': alunoDeletar})
 
 def listarAlunos(request):
-    alunos = Aluno.objects.all()
+    buscaNome = request.GET.get('busca-nome', None)
+
+    if buscaNome:
+        alunos = Aluno.objects.filter(nome__icontains=buscaNome)
+    else:
+        alunos = Aluno.objects.order_by('id')
+
     return render(request, 'lista_alunos.html', {'alunos': alunos})
 
 def avaliarAluno(request):

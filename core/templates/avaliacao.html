@@ -7,7 +7,7 @@
 	<form method="POST">
 		{% csrf_token %}
 		{{ form|bootstrap }}
-		<input type="submit" value="Cancelar" href="{% url 'home' %}" class="btn btn-primary">
+		<a href="{% url 'home' %}" class="btn btn-primary">Cancelar</a>
 		<input type="submit" value="Salvar" class="btn btn-primary">
 	</form>	
 </div>

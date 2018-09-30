@@ -2,8 +2,14 @@
 {% block title %} Lista de Alunos {% endblock %}
 
 {% block main %}
+<h1 align="center">Alunos Cadastrados</h1>
 <div class="container">
-	<h1 align="center">Alunos Cadastrados</h1>	
+	<form>
+		<div class="col-sm-4">
+			<input type="text" name="busca-nome" class="form-control" placeholder="Nome do Aluno"/>
+		</div>
+		<input type="submit" class="btn-lg glyphicon glyphicon-search"/>
+	</form>
 	<table class="table table-striped table-hover">
 		<thead>
 			<tr>
@@ -22,7 +28,7 @@
 			<td>{{ aluno.cpf }}</td>
 			<td>{{ aluno.telefone }}</td>
 			<td>{{ aluno.email }}</td>
-			<td>{{ aluno.dtNascimento }}</td>
+			<td>{{ aluno.dtNascimento|date:"d-m-Y" }}</td>
 			<td>
 				<a href="{% url 'avaliarAluno'%}" type="submit" class="glyphicon glyphicon-paste"></a>
 				<a href="{% url 'excluirAluno' aluno.id %}" type="submit" class="glyphicon glyphicon-trash"></a>

@@ -10,8 +10,8 @@
 			{{ form|bootstrap }}
 			<div>
 				<br>
-				<input type="submit" value="Avaliar Agora" href="{% url 'avaliarAluno' %}" class="btn btn-success btn"/>
-				<input type="submit" value="Cancelar" href="{% url 'home' %}" class="btn btn-primary btn"/>
+				<input type="submit" value="Avaliar Agora" name="AvaliarAgora" href="{% url 'cadastrarAluno' %}" class="btn btn-success btn"/>
+				<a href="{% url 'home' %}" class="btn btn-primary">Cancelar</a>
 				<input type="submit" value="Gravar" class="btn btn-primary btn"/>
 			</div>
 		</form>
